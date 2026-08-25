@@ -1,0 +1,37 @@
+{
+  "name": "@vocadev/core",
+  "version": "0.1.0",
+  "description": "Color definitions and utilities for Vocaloid developer themes",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./palettes": {
+      "types": "./dist/palettes/index.d.ts",
+      "import": "./dist/palettes/index.mjs",
+      "require": "./dist/palettes/index.js"
+    },
+    "./palettes/miku": {
+      "types": "./dist/palettes/miku.d.ts",
+      "import": "./dist/palettes/miku.mjs",
+      "require": "./dist/palettes/miku.js"
+    },
+    "./miku.json": "./dist/miku.json",
+    "./miku.css": "./dist/miku.css"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  }
+}

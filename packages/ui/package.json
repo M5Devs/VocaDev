@@ -1,0 +1,11 @@
+{
+  "name": "@vocadev/ui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "UI component library for VocaDev (Placeholder for Phase 3)",
+  "scripts": {
+    "build": "echo \"@vocadev/ui placeholder build\"",
+    "test": "echo \"@vocadev/ui placeholder test\"",
+    "lint": "echo \"@vocadev/ui placeholder lint\""
+  }
+}
