@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@vocadev/core": ["./packages/core/src/index.ts"],
+      "@vocadev/core/*": ["./packages/core/src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

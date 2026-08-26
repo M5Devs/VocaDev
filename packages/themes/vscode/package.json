@@ -1,0 +1,41 @@
+{
+  "name": "vocadev-vscode-theme",
+  "displayName": "VocaDev Miku Theme",
+  "description": "Developer customization theme inspired by Vocaloid Hatsune Miku",
+  "version": "0.1.0",
+  "publisher": "vocadev",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "color-theme",
+    "miku",
+    "vocaloid",
+    "hatsune-miku",
+    "cyan",
+    "dark-theme"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "VocaDev Miku Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/miku-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "vsce package --no-dependencies -o vocadev-vscode-theme-0.1.0.vsix",
+    "vscode:prepublish": "pnpm --filter @vocadev/core build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vocadev/vocadev"
+  },
+  "license": "MIT"
+}
