@@ -1,0 +1,18 @@
+<idea-plugin>
+    <id>dev.voca.jetbrains.miku</id>
+    <name>VocaDev Miku Dark</name>
+    <vendor email="support@voca.dev" url="https://voca.dev">VocaDev</vendor>
+
+    <description><![CDATA[
+    <h1>VocaDev Miku Dark Theme</h1>
+    <p>A developer customization theme inspired by Hatsune Miku (初音ミク) for JetBrains IDEs.</p>
+    <p>Features Miku Cyan (#39C5BB) primary accents, Neon Green (#39FF14) highlights, and a sleek dark background (#0F0F23).</p>
+    <p>Compatible with IntelliJ IDEA, PyCharm, WebStorm, Android Studio, and other JetBrains IDEs.</p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <themeProvider id="dev.voca.jetbrains.miku" path="/themes/Miku_Dark.theme.json"/>
+    </extensions>
+</idea-plugin>

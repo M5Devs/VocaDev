@@ -3,7 +3,15 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "themes/**", "*.vsix"]
+      "outputs": ["dist/**", "themes/**", "*.vsix", "build/distributions/**"]
+    },
+    "jetbrains:gradle-build": {
+      "dependsOn": ["^build"],
+      "outputs": ["build/distributions/**", "build/libs/**"]
+    },
+    "neovim:package": {
+      "dependsOn": ["^build"],
+      "outputs": []
     },
     "test": {
       "dependsOn": ["build"],

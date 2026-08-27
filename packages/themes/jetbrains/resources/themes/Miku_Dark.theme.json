@@ -1,0 +1,59 @@
+{
+  "name": "VocaDev Miku Dark",
+  "dark": true,
+  "author": "VocaDev",
+  "editorScheme": "/Miku_Dark.xml",
+  "colors": {
+    "Primary": "#39C5BB",
+    "Secondary": "#86CECB",
+    "Accent": "#39FF14",
+    "Background": "#0F0F23",
+    "Foreground": "#E0E0E0",
+
+    "EditorPane.background": "#0F0F23",
+    "Panel.background": "#0F0F23",
+    "SidePanel.background": "#0A0A18",
+
+    "ToolWindow.Header.background": "#1A1A2E",
+    "ToolWindow.Header.activeBackground": "#24243D",
+    "ToolWindow.HeaderTab.selectedBackground": "#0F0F23",
+
+    "StatusBar.background": "#0A0A18",
+    "StatusBar.borderColor": "#1A1A2E",
+    "StatusBar.foreground": "#E0E0E0",
+
+    "TabbedPane.background": "#0A0A18",
+    "TabbedPane.selectedBackground": "#0F0F23",
+    "TabbedPane.focusColor": "#39C5BB",
+
+    "TitlePane.background": "#0A0A18",
+    "TitlePane.infoForeground": "#86CECB",
+    "TitlePane.inactiveBackground": "#0F0F23",
+
+    "Tree.background": "#0A0A18",
+    "Tree.foreground": "#E0E0E0",
+    "Tree.selectionBackground": "#2A2D4A",
+    "Tree.selectionForeground": "#FFFFFF",
+
+    "List.background": "#0F0F23",
+    "List.foreground": "#E0E0E0",
+    "List.selectionBackground": "#2A2D4A",
+    "List.selectionForeground": "#FFFFFF",
+
+    "Button.startBackground": "#39C5BB",
+    "Button.endBackground": "#39C5BB",
+    "Button.focusedBorderColor": "#39FF14",
+
+    "ProgressBar.trackColor": "#1A1A2E",
+    "ProgressBar.progressColor": "#39C5BB",
+    "ProgressBar.indeterminateStartColor": "#39C5BB",
+    "ProgressBar.indeterminateEndColor": "#39FF14"
+  },
+  "ui": {
+    "ToolWindow": {
+      "Header": {
+        "background": "#1A1A2E"
+      }
+    }
+  }
+}
