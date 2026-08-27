@@ -21,7 +21,7 @@ Designed with extensibility in mind for future characters (e.g., Kasane Teto, Ak
 | Editor / Tool | Package | Status |
 | --- | --- | --- |
 | **CLI Toolkit** | `@M5Devs/vocadev-cli` | Supported |
-| **VS Code** | `@M5Devs/vocadev-vscode-theme` | Supported |
+| **VS Code** | `vocadev-vscode-theme` (`@M5Devs/vocadev-vscode-theme`) | Supported |
 | **JetBrains IDEs** (IntelliJ, PyCharm, WebStorm, Android Studio) | `@M5Devs/vocadev-jetbrains-theme` | Supported |
 | **Neovim** | `@M5Devs/vocadev-neovim-theme` | Supported |
 | **Zed** | `@M5Devs/vocadev-zed-theme` | Supported |
@@ -154,7 +154,7 @@ Alternatively, copy `packages/themes/zed/themes/miku.json` to your Zed themes di
 To package and install the VS Code theme extension locally:
 
 ```bash
-pnpm --filter @M5Devs/vocadev-vscode-theme build
+pnpm --filter vocadev-vscode-theme build
 ```
 
 Install the resulting `.vsix` file: `code --install-extension vocadev-vscode-theme-0.1.0.vsix`.
