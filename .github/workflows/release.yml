@@ -1,0 +1,113 @@
+name: Build Release Assets
+
+on:
+  push:
+    tags:
+      - 'v*'  # يشتغل لما نعمل tag بـ v0.1.0, v0.2.0, إلخ
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-python@v5
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies
+        run: pnpm install
+
+      # ====== Build Core ======
+      - name: Build @vocadev/core
+        run: pnpm --filter @vocadev/core build
+
+      # ====== Build VS Code Extension ======
+      - name: Build VS Code Theme
+        run: |
+          pnpm --filter @vocadev/vscode-theme build
+          pnpm --filter @vocadev/vscode-theme package
+        # بيطلع .vsix في packages/themes/vscode/
+
+      # ====== Build JetBrains Plugin ======
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build JetBrains Theme
+        run: |
+          cd packages/themes/jetbrains
+          ./gradlew buildPlugin
+        # بيطلع .zip في build/distributions/
+
+      # ====== Build Neovim ======
+      - name: Package Neovim Theme
+        run: |
+          cd packages/themes/neovim
+          mkdir -p ../../dist
+          zip -r ../../dist/vocadev-neovim-miku-${{ github.ref_name }}.zip \
+            lua/ colors/ README.md
+        # بيحزم Lua files في .zip
+
+      # ====== Build Zed ======
+      - name: Package Zed Theme
+        run: |
+          cd packages/themes/zed
+          mkdir -p ../../dist
+          zip -r ../../dist/vocadev-zed-miku-${{ github.ref_name }}.zip \
+            themes/ extension.toml README.md
+        # بيحزم Zed files في .zip
+
+      # ====== Collect Assets ======
+      - name: Collect all assets
+        run: |
+          mkdir -p release-assets
+          
+          # VS Code
+          cp packages/themes/vscode/*.vsix release-assets/ || true
+          
+          # JetBrains
+          cp packages/themes/jetbrains/build/distributions/*.zip release-assets/ || true
+          
+          # Neovim
+          cp dist/vocadev-neovim-*.zip release-assets/ || true
+          
+          # Zed
+          cp dist/vocadev-zed-*.zip release-assets/ || true
+          
+          ls -la release-assets/
+
+      # ====== Create GitHub Release ======
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release-assets/*
+          generate_release_notes: true
+          body: |
+            ## 🎉 VocaDev ${{ github.ref_name }}
+            
+            ### 💙 Hatsune Miku Theme
+            
+            | Editor | Asset | Install |
+            |--------|-------|---------|
+            | VS Code | `vocadev-vscode-*.vsix` | Drag to VS Code or `code --install-extension` |
+            | JetBrains | `vocadev-jetbrains-*.zip` | Settings → Plugins → Install from disk |
+            | Neovim | `vocadev-neovim-*.zip` | Extract to `~/.config/nvim/` |
+            | Zed | `vocadev-zed-*.zip` | Extensions → Install from file |
+            
+            ### 🎨 Miku Palette
+            - Primary: `#39C5BB`
+            - Secondary: `#86CECB`
+            - Accent: `#39FF14`
+            
+            Full docs: https://github.com/${{ github.repository }}/blob/main/README.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
