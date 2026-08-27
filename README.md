@@ -123,4 +123,4 @@ Contributions are very welcome! Please follow these guidelines:
 
 ## 📄 License
 
-This project is open-source and available under the [MIT License](LICENSE).
+This project is open-source and available under the [GPL-v3 License](LICENSE).
