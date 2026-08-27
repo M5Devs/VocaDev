@@ -149,4 +149,4 @@ jobs:
             
             Full docs: https://github.com/${{ github.repository }}/blob/main/README.md
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
