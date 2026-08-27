@@ -1,0 +1,25 @@
+{
+  "name": "@vocadev/neovim-theme",
+  "version": "0.1.0",
+  "description": "VocaDev Miku Dark colorscheme for Neovim",
+  "main": "lua/vocadev/themes/init.lua",
+  "scripts": {
+    "build": "echo \"@vocadev/neovim-theme package build\"",
+    "neovim:package": "echo \"@vocadev/neovim-theme package build\"",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vocadev/core": "workspace:*"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.8"
+  },
+  "keywords": [
+    "neovim",
+    "neovim-theme",
+    "colorscheme",
+    "lua",
+    "miku",
+    "vocadev"
+  ]
+}

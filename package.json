@@ -4,6 +4,8 @@
   "packageManager": "pnpm@10.30.3",
   "scripts": {
     "build": "turbo run build",
+    "jetbrains:gradle-build": "turbo run jetbrains:gradle-build",
+    "neovim:package": "turbo run neovim:package",
     "dev": "turbo run dev",
     "test": "turbo run test",
     "lint": "turbo run lint",

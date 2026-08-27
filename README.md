@@ -16,6 +16,17 @@ Designed with extensibility in mind for future characters (e.g., Kasane Teto, Ak
 
 ---
 
+## 📦 Supported Editors & Packages
+
+| Editor / Tool | Package | Status |
+| --- | --- | --- |
+| **VS Code** | `vocadev-vscode-theme` | Supported |
+| **JetBrains IDEs** (IntelliJ, PyCharm, WebStorm, Android Studio) | `@vocadev/jetbrains-theme` | Supported |
+| **Neovim** | `@vocadev/neovim-theme` | Supported |
+| **Core Palette** | `@vocadev/core` | Supported |
+
+---
+
 ## 📦 Project Structure
 
 ```
@@ -26,11 +37,9 @@ vocadev/
 │   │       ├── miku.ts
 │   │       └── index.ts
 │   ├── themes/
-│   │   └── vscode/            # VS Code Miku Dark Theme package
-│   │       ├── themes/
-│   │       │   └── miku-color-theme.json
-│   │       ├── package.json
-│   │       └── README.md
+│   │   ├── vscode/            # VS Code Miku Dark Theme package
+│   │   ├── jetbrains/         # JetBrains IDEs Miku Dark Theme plugin
+│   │   └── neovim/            # Neovim Lua Miku Dark Theme package
 │   └── ui/                    # UI components (Placeholder for Phase 3)
 ├── turbo.json
 ├── package.json
@@ -61,6 +70,77 @@ vocadev/
 <!-- Screenshot Placeholder -->
 > *VS Code Theme Preview: Miku Dark Theme with custom syntax highlighting and terminal styling.*
 
+<!-- JetBrains Screenshot Placeholder -->
+> *JetBrains IDEs Preview: VocaDev Miku Dark plugin on IntelliJ IDEA / PyCharm / WebStorm.*
+
+<!-- Neovim Screenshot Placeholder -->
+> *Neovim Preview: VocaDev Miku Dark colorscheme with Treesitter and LSP diagnostics.*
+
+---
+
+## 💻 Editor Installation Instructions
+
+### VS Code
+
+To package and install the VS Code theme extension locally:
+
+```bash
+pnpm --filter vocadev-vscode-theme build
+```
+
+Install the resulting `.vsix` file: `code --install-extension vocadev-vscode-theme-0.1.0.vsix`.
+
+---
+
+### JetBrains IDEs (IntelliJ IDEA, PyCharm, WebStorm, Android Studio)
+
+Build the plugin zip package locally:
+
+```bash
+pnpm --filter @vocadev/jetbrains-theme build
+# or: pnpm jetbrains:gradle-build
+```
+
+1. Open **Settings / Preferences** in your JetBrains IDE.
+2. Navigate to **Plugins**, click the gear icon ⚙️, and select **Install Plugin from Disk...**.
+3. Select `packages/themes/jetbrains/build/distributions/vocadev-jetbrains-theme-0.1.0.zip`.
+4. Restart the IDE.
+
+---
+
+### Neovim
+
+Add to your plugin manager:
+
+#### lazy.nvim
+```lua
+{
+  "vocadev/vocadev",
+  config = function()
+    require("vocadev.themes.miku").setup()
+    vim.cmd.colorscheme("vocadev-miku")
+  end,
+}
+```
+
+#### packer.nvim
+```lua
+use {
+  "vocadev/vocadev",
+  config = function()
+    require("vocadev.themes.miku").setup()
+    vim.cmd([[colorscheme vocadev-miku]])
+  end
+}
+```
+
+#### vim-plug
+```vim
+Plug 'vocadev/vocadev'
+
+colorscheme vocadev-miku
+```
+
 ---
 
 ## 🚀 Getting Started
@@ -69,6 +149,7 @@ vocadev/
 
 - [Node.js](https://nodejs.org/) >= 22.0.0
 - [pnpm](https://pnpm.io/) >= 10.0.0
+- Java JDK >= 17 & Gradle (for building JetBrains plugin)
 
 ### Local Development Setup
 
@@ -97,18 +178,6 @@ vocadev/
    ```bash
    pnpm dev
    ```
-
----
-
-## 🛠️ VS Code Extension Packaging
-
-To package the VS Code theme extension locally:
-
-```bash
-pnpm --filter vocadev-vscode-theme build
-```
-
-This will produce a `.vsix` file ready for local installation in VS Code (`code --install-extension vocadev-vscode-theme-0.1.0.vsix`).
 
 ---
 
