@@ -4,8 +4,8 @@
   "description": "VocaDev Miku Dark Theme plugin for JetBrains IDEs",
   "private": true,
   "scripts": {
-    "build": "gradle buildPlugin",
-    "jetbrains:gradle-build": "gradle buildPlugin",
+    "build": "./gradlew buildPlugin",
+    "jetbrains:gradle-build": "./gradlew buildPlugin",
     "test": "vitest run"
   },
   "devDependencies": {
