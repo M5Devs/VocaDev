@@ -5,6 +5,11 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g., 0.1.0)'
+        required: true
+        default: '0.1.0'
 
 jobs:
   build-and-release:
@@ -13,6 +18,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # عشان git tags تشتغل
 
       - name: Setup Node
         uses: actions/setup-python@v5
@@ -25,6 +32,25 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      # ====== Create Tag (for workflow_dispatch) ======
+      - name: Create and Push Tag
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git tag -a v${{ github.event.inputs.version }} -m "Release v${{ github.event.inputs.version }}"
+          git push origin v${{ github.event.inputs.version }}
+
+      # ====== Get Version ======
+      - name: Get Version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          fi
+
       # ====== Build Core ======
       - name: Build @M5Devs/vocadev-core
         run: pnpm --filter @M5Devs/vocadev-core build
@@ -33,7 +59,8 @@ jobs:
       - name: Build VS Code Theme
         run: |
           pnpm --filter @M5Devs/vocadev-vscode-theme build
-          pnpm --filter @M5Devs/vocadev-vscode-theme package
+          cd packages/themes/vscode
+          vsce package --no-dependencies -o vocadev-vscode-theme-${{ steps.version.outputs.version }}.vsix
 
       # ====== Build JetBrains Plugin ======
       - name: Setup Java
@@ -52,7 +79,7 @@ jobs:
         run: |
           cd packages/themes/neovim
           mkdir -p ../../dist
-          zip -r ../../dist/vocadev-neovim-miku-${{ github.ref_name }}.zip \
+          zip -r ../../dist/vocadev-neovim-miku-v${{ steps.version.outputs.version }}.zip \
             lua/ colors/ README.md
 
       # ====== Package Zed ======
@@ -60,7 +87,7 @@ jobs:
         run: |
           cd packages/themes/zed
           mkdir -p ../../dist
-          zip -r ../../dist/vocadev-zed-miku-${{ github.ref_name }}.zip \
+          zip -r ../../dist/vocadev-zed-miku-v${{ steps.version.outputs.version }}.zip \
             themes/ extension.toml README.md
 
       # ====== Collect Assets ======
@@ -94,10 +121,11 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: v${{ steps.version.outputs.version }}
           files: release-assets/*
           generate_release_notes: true
           body: |
-            ## 🎉 VocaDev ${{ github.ref_name }}
+            ## 🎉 VocaDev v${{ steps.version.outputs.version }}
             
             ### 💙 Hatsune Miku Theme
             
