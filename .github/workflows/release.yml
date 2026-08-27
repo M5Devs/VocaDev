@@ -15,11 +15,16 @@ jobs:
   build-and-release:
     runs-on: ubuntu-latest
     
+    permissions:
+      contents: write
+      packages: write
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # عشان git tags تشتغل
+          fetch-depth: 0
+          token: ${{ secrets.PUBLISH_TOKEN }}
 
       - name: Setup Node
         uses: actions/setup-python@v5
@@ -35,9 +40,12 @@ jobs:
       # ====== Create Tag (for workflow_dispatch) ======
       - name: Create and Push Tag
         if: github.event_name == 'workflow_dispatch'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git tag -a v${{ github.event.inputs.version }} -m "Release v${{ github.event.inputs.version }}"
           git push origin v${{ github.event.inputs.version }}
 
@@ -60,7 +68,7 @@ jobs:
         run: |
           pnpm --filter @M5Devs/vocadev-vscode-theme build
           cd packages/themes/vscode
-          vsce package --no-dependencies -o vocadev-vscode-theme-${{ steps.version.outputs.version }}.vsix
+          npx vsce package --no-dependencies -o vocadev-vscode-theme-${{ steps.version.outputs.version }}.vsix
 
       # ====== Build JetBrains Plugin ======
       - name: Setup Java
