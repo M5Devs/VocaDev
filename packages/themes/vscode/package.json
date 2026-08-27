@@ -37,7 +37,8 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "build": "node -e \"const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json'));p.name='vocadev-vscode-theme';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n');try{require('child_process').execSync('vsce package --no-dependencies -o vocadev-vscode-theme-0.1.0.vsix',{stdio:'inherit'})}finally{p.name='@M5Devs/vocadev-vscode-theme';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n')}\"",
+    "build": "node -e \"const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json'));p.name='vocadev-vscode-theme';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n');try{require('child_process').execSync('vsce package --no-dependencies -o vocadev-vscode-theme-'+p.version+'.vsix',{stdio:'inherit'})}finally{p.name='@M5Devs/vocadev-vscode-theme';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n')}\"",
+    "package": "node -e \"const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json'));p.name='vocadev-vscode-theme';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n');try{require('child_process').execSync('vsce package --no-dependencies -o vocadev-vscode-theme-'+p.version+'.vsix',{stdio:'inherit'})}finally{p.name='@M5Devs/vocadev-vscode-theme';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n')}\"",
     "vscode:prepublish": "pnpm --filter @M5Devs/vocadev-core build"
   },
   "license": "MIT"
