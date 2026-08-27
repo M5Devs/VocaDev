@@ -20,6 +20,7 @@ Designed with extensibility in mind for future characters (e.g., Kasane Teto, Ak
 
 | Editor / Tool | Package | Status |
 | --- | --- | --- |
+| **CLI Toolkit** | `@vocadev/cli` | Supported |
 | **VS Code** | `vocadev-vscode-theme` | Supported |
 | **JetBrains IDEs** (IntelliJ, PyCharm, WebStorm, Android Studio) | `@vocadev/jetbrains-theme` | Supported |
 | **Neovim** | `@vocadev/neovim-theme` | Supported |
@@ -33,6 +34,7 @@ Designed with extensibility in mind for future characters (e.g., Kasane Teto, Ak
 ```
 vocadev/
 ├── packages/
+│   ├── cli/                   # VocaDev CLI toolkit (commands: install, list, preview, apply, doctor, update)
 │   ├── core/                  # Color definitions & exported formats (TS, JSON, CSS)
 │   │   └── palettes/
 │   │       ├── miku.ts
@@ -50,6 +52,44 @@ vocadev/
 │       ├── ci.yml
 │       └── publish.yml
 └── README.md
+```
+
+---
+
+## 🛠️ VocaDev CLI (`@vocadev/cli`)
+
+Install the VocaDev CLI globally or use it via pnpm / npx:
+
+```bash
+npm install -g @vocadev/cli
+# or run directly
+pnpm dlx @vocadev/cli --help
+```
+
+### CLI Commands & Usage
+
+```bash
+# List all characters and installation status
+vocadev list
+
+# Terminal color preview & syntax highlighting preview
+vocadev preview miku
+
+# Install theme files to detected code editors
+vocadev install miku
+vocadev install miku --vscode --jetbrains
+
+# Uninstall theme files from code editors
+vocadev uninstall miku --all
+
+# Generate Tailwind CSS preset, CSS variables, or SCSS variables for projects
+vocadev apply miku --tailwind --css --scss -o ./vocadev
+
+# Run health diagnostics on installed editors and themes
+vocadev doctor
+
+# Check for and update installed themes to latest version
+vocadev update
 ```
 
 ---
