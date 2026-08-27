@@ -86,26 +86,28 @@ jobs:
       - name: Package Neovim Theme
         run: |
           cd packages/themes/neovim
-          mkdir -p ../../dist
-          zip -r ../../dist/vocadev-neovim-miku-v${{ steps.version.outputs.version }}.zip \
+          mkdir -p ../../../dist
+          zip -r ../../../dist/vocadev-neovim-miku-v${{ steps.version.outputs.version }}.zip \
             lua/ colors/ README.md
+          ls -la ../../../dist
 
       # ====== Package Zed ======
       - name: Package Zed Theme
         run: |
           cd packages/themes/zed
-          mkdir -p ../../dist
-          zip -r ../../dist/vocadev-zed-miku-v${{ steps.version.outputs.version }}.zip \
+          mkdir -p ../../../dist
+          zip -r ../../../dist/vocadev-zed-miku-v${{ steps.version.outputs.version }}.zip \
             themes/ extension.toml README.md
+          ls -la ../../../dist
 
       # ====== Collect Assets ======
       - name: Collect all assets
         run: |
           mkdir -p release-assets
-          cp packages/themes/vscode/*.vsix release-assets/ || true
-          cp packages/themes/jetbrains/build/distributions/*.zip release-assets/ || true
-          cp dist/vocadev-neovim-*.zip release-assets/ || true
-          cp dist/vocadev-zed-*.zip release-assets/ || true
+          cp packages/themes/vscode/*.vsix release-assets/ 2>/dev/null || true
+          cp packages/themes/jetbrains/build/distributions/*.zip release-assets/ 2>/dev/null || true
+          cp dist/vocadev-neovim-*.zip release-assets/ 2>/dev/null || true
+          cp dist/vocadev-zed-*.zip release-assets/ 2>/dev/null || true
           ls -la release-assets/
 
       # ====== Publish to GitHub Packages ======
