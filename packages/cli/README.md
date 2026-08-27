@@ -1,13 +1,13 @@
-# @vocadev/cli
+# @M5Devs/vocadev-cli
 
 > VocaDev CLI toolkit for installing, previewing, and applying Vocaloid developer themes across text editors and project configurations.
 
 ## Installation
 
 ```bash
-npm install -g @vocadev/cli
+npm install -g @M5Devs/vocadev-cli
 # or
-pnpm add -g @vocadev/cli
+pnpm add -g @M5Devs/vocadev-cli
 ```
 
 ## Usage

@@ -1,4 +1,4 @@
-import type { CharacterPalette } from '@vocadev/core/palettes';
+import type { CharacterPalette } from '@M5Devs/vocadev-core/palettes';
 
 export type EditorType = 'vscode' | 'jetbrains' | 'neovim' | 'zed';
 

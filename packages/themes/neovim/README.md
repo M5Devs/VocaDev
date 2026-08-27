@@ -1,4 +1,4 @@
-# @vocadev/neovim-theme
+# @M5Devs/vocadev-neovim-theme
 
 Pure Lua Miku Dark colorscheme for Neovim inspired by Hatsune Miku (初音ミク).
 
@@ -22,7 +22,7 @@ Supports Treesitter, LSP diagnostics, GitSigns, Telescope, NvimTree, Lualine, Bu
 ### lazy.nvim
 ```lua
 {
-  "vocadev/vocadev",
+  "M5Devs/VocaDev",
   config = function()
     require("vocadev.themes.miku").setup({ transparent = false })
     vim.cmd.colorscheme("vocadev-miku")
@@ -33,7 +33,7 @@ Supports Treesitter, LSP diagnostics, GitSigns, Telescope, NvimTree, Lualine, Bu
 ### packer.nvim
 ```lua
 use {
-  "vocadev/vocadev",
+  "M5Devs/VocaDev",
   config = function()
     require("vocadev.themes.miku").setup()
     vim.cmd([[colorscheme vocadev-miku]])
@@ -43,7 +43,7 @@ use {
 
 ### vim-plug
 ```vim
-Plug 'vocadev/vocadev'
+Plug 'M5Devs/VocaDev'
 
 " In your init.vim / init.lua
 colorscheme vocadev-miku

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 
-describe('@vocadev/zed-theme structure and definitions', () => {
+describe('@M5Devs/vocadev-zed-theme structure and definitions', () => {
   const root = path.resolve(__dirname, '..');
 
   it('contains extension.toml and theme definition file', () => {

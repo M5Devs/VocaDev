@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 
-describe('@vocadev/neovim-theme structure', () => {
+describe('@M5Devs/vocadev-neovim-theme structure', () => {
   it('contains lua modules and vim entry file', () => {
     const root = path.resolve(__dirname, '..');
     expect(fs.existsSync(path.join(root, 'lua/vocadev/themes/miku.lua'))).toBe(true);

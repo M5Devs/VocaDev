@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 
-describe('@vocadev/jetbrains-theme structure', () => {
+describe('@M5Devs/vocadev-jetbrains-theme structure', () => {
   it('contains theme definition and metadata files', () => {
     const root = path.resolve(__dirname, '..');
     expect(fs.existsSync(path.join(root, 'resources/themes/Miku_Dark.theme.json'))).toBe(true);
