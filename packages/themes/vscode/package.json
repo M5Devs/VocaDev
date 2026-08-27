@@ -1,5 +1,5 @@
 {
-  "name": "@M5Devs/vocadev-vscode-theme",
+  "name": "vocadev-vscode-theme",
   "displayName": "VocaDev Miku Theme",
   "description": "Developer customization theme inspired by Vocaloid Hatsune Miku",
   "version": "0.1.0",
@@ -37,9 +37,11 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "build": "node -e \"const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json'));p.name='vocadev-vscode-theme';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n');try{require('child_process').execSync('vsce package --no-dependencies -o vocadev-vscode-theme-'+p.version+'.vsix',{stdio:'inherit'})}finally{p.name='@M5Devs/vocadev-vscode-theme';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n')}\"",
-    "package": "node -e \"const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json'));p.name='vocadev-vscode-theme';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n');try{require('child_process').execSync('vsce package --no-dependencies -o vocadev-vscode-theme-'+p.version+'.vsix',{stdio:'inherit'})}finally{p.name='@M5Devs/vocadev-vscode-theme';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n')}\"",
-    "vscode:prepublish": "pnpm --filter @M5Devs/vocadev-core build"
+    "build": "vsce package --no-dependencies",
+    "package": "vsce package --no-dependencies",
+    "vscode:prepublish": "pnpm --filter @M5Devs/vocadev-core build",
+    "prepublishOnly": "node -e \"const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json'));p.name='@M5Devs/vocadev-vscode-theme';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n')\"",
+    "postpublish": "node -e \"const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json'));p.name='vocadev-vscode-theme';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n')\""
   },
   "license": "MIT"
 }

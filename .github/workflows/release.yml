@@ -66,7 +66,7 @@ jobs:
       # ====== Build VS Code Extension ======
       - name: Build VS Code Theme
         run: |
-          pnpm --filter @M5Devs/vocadev-vscode-theme build
+          pnpm --filter vocadev-vscode-theme build
           cd packages/themes/vscode
           npx vsce package --no-dependencies -o vocadev-vscode-theme-${{ steps.version.outputs.version }}.vsix
 
