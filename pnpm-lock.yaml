@@ -78,6 +78,16 @@ importers:
 
   packages/themes/vscode: {}
 
+  packages/themes/zed:
+    dependencies:
+      '@vocadev/core':
+        specifier: workspace:*
+        version: link:../../core
+    devDependencies:
+      vitest:
+        specifier: ^3.0.8
+        version: 3.2.7(@types/node@22.20.1)(jiti@2.6.1)
+
   packages/ui: {}
 
 packages:

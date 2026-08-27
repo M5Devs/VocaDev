@@ -1,0 +1,7 @@
+id = "vocadev-miku-dark"
+name = "VocaDev Miku Dark"
+version = "0.1.0"
+schema_version = 1
+authors = ["VocaDev Team <team@vocadev.dev>"]
+description = "VocaDev Miku Dark theme extension for Zed Editor"
+repository = "https://github.com/vocadev/vocadev"

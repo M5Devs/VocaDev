@@ -23,6 +23,7 @@ Designed with extensibility in mind for future characters (e.g., Kasane Teto, Ak
 | **VS Code** | `vocadev-vscode-theme` | Supported |
 | **JetBrains IDEs** (IntelliJ, PyCharm, WebStorm, Android Studio) | `@vocadev/jetbrains-theme` | Supported |
 | **Neovim** | `@vocadev/neovim-theme` | Supported |
+| **Zed** | `@vocadev/zed-theme` | Supported |
 | **Core Palette** | `@vocadev/core` | Supported |
 
 ---
@@ -39,7 +40,8 @@ vocadev/
 │   ├── themes/
 │   │   ├── vscode/            # VS Code Miku Dark Theme package
 │   │   ├── jetbrains/         # JetBrains IDEs Miku Dark Theme plugin
-│   │   └── neovim/            # Neovim Lua Miku Dark Theme package
+│   │   ├── neovim/            # Neovim Lua Miku Dark Theme package
+│   │   └── zed/               # Zed Miku Dark Theme package
 │   └── ui/                    # UI components (Placeholder for Phase 3)
 ├── turbo.json
 ├── package.json
@@ -49,6 +51,22 @@ vocadev/
 │       └── publish.yml
 └── README.md
 ```
+
+---
+
+### Zed Editor
+
+To install the Zed extension locally:
+
+```bash
+pnpm --filter @vocadev/zed-theme zed:package
+```
+
+1. Open Zed Editor.
+2. Open the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`) and search for **`zed: install dev extension`**.
+3. Select the `packages/themes/zed` directory.
+
+Alternatively, copy `packages/themes/zed/themes/miku.json` to your Zed themes directory (`~/.config/zed/themes/miku.json`).
 
 ---
 

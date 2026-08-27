@@ -35,5 +35,8 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Zed Package Build
+        run: pnpm zed:package
+
       - name: Test
         run: pnpm test
