@@ -3,7 +3,8 @@ name: Build Release Assets
 on:
   push:
     tags:
-      - 'v*'  # يشتغل لما نعمل tag بـ v0.1.0, v0.2.0, إلخ
+      - 'v*'  # يشتغل لما نعمل tag بـ v0.1.0, v0.2.0,إلخ
+  workflow_dispatch:
 
 jobs:
   build-and-release:
