@@ -1,5 +1,5 @@
 {
-  "name": "@vocadev/core",
+  "name": "@M5Devs/vocadev-core",
   "version": "0.1.0",
   "description": "Color definitions and utilities for Vocaloid developer themes",
   "main": "./dist/index.js",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vocadev/vocadev.git"
+    "url": "https://github.com/M5Devs/VocaDev.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

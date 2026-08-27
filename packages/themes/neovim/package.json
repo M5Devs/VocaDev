@@ -1,22 +1,22 @@
 {
-  "name": "@vocadev/neovim-theme",
+  "name": "@M5Devs/vocadev-neovim-theme",
   "version": "0.1.0",
   "description": "VocaDev Miku Dark colorscheme for Neovim",
   "main": "lua/vocadev/themes/init.lua",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vocadev/vocadev.git"
+    "url": "https://github.com/M5Devs/VocaDev.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "build": "echo \"@vocadev/neovim-theme package build\"",
-    "neovim:package": "echo \"@vocadev/neovim-theme package build\"",
+    "build": "echo \"@M5Devs/vocadev-neovim-theme package build\"",
+    "neovim:package": "echo \"@M5Devs/vocadev-neovim-theme package build\"",
     "test": "vitest run"
   },
   "dependencies": {
-    "@vocadev/core": "workspace:*"
+    "@M5Devs/vocadev-core": "workspace:*"
   },
   "devDependencies": {
     "vitest": "^3.0.8"

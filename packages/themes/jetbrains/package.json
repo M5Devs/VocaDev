@@ -1,10 +1,10 @@
 {
-  "name": "@vocadev/jetbrains-theme",
+  "name": "@M5Devs/vocadev-jetbrains-theme",
   "version": "0.1.0",
   "description": "VocaDev Miku Dark Theme plugin for JetBrains IDEs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vocadev/vocadev.git"
+    "url": "https://github.com/M5Devs/VocaDev.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

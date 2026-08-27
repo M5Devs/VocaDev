@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import type { CharacterPalette } from '@vocadev/core/palettes';
+import type { CharacterPalette } from '@M5Devs/vocadev-core/palettes';
 import type { EditorType } from '../types.js';
 
 export function getAsciiHeader(): string {
@@ -57,7 +57,7 @@ export function renderPalettePreview(palette: CharacterPalette): string {
   const num = chalk.hex(colors.syntax.constant);
 
   output += `${cm('// VocaDev Syntax Preview')}\n`;
-  output += `${kw('import')} { ${vr('Vocaloid')} } ${kw('from')} ${str("'@vocadev/core'")};\n\n`;
+  output += `${kw('import')} { ${vr('Vocaloid')} } ${kw('from')} ${str("'@M5Devs/vocadev-core'")};\n\n`;
   output += `${kw('async function')} ${fn('sing')}(${vr('song')}: ${typ('string')}, ${vr('tempo')}: ${typ('number')} = ${num('120')}): ${typ('Promise')}<${typ('void')}> {\n`;
   output += `  ${kw('const')} ${vr('status')} = ${str('`Singing ${song} at ${tempo} BPM`')};\n`;
   output += `  ${fn('console')}.${fn('log')}(${vr('status')});\n`;

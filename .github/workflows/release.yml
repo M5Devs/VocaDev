@@ -26,8 +26,8 @@ jobs:
         run: pnpm install
 
       # ====== Build Core ======
-      - name: Build @vocadev/core
-        run: pnpm --filter @vocadev/core build
+      - name: Build @M5Devs/vocadev-core
+        run: pnpm --filter @M5Devs/vocadev-core build
 
       # ====== Build Monorepo ======
       - name: Build monorepo
@@ -48,8 +48,8 @@ jobs:
       # ====== Build VS Code Extension ======
       - name: Build VS Code Theme
         run: |
-          pnpm --filter @vocadev/vscode-theme build
-          pnpm --filter @vocadev/vscode-theme package
+          pnpm --filter @M5Devs/vocadev-vscode-theme build
+          pnpm --filter @M5Devs/vocadev-vscode-theme package
         # بيطلع .vsix في packages/themes/vscode/
 
       # ====== Build JetBrains Plugin ======

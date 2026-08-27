@@ -1,4 +1,4 @@
-import { mikuPalette } from '@vocadev/core/palettes/miku';
+import { mikuPalette } from '@M5Devs/vocadev-core/palettes/miku';
 import type { CharacterInfo, ThemeRegistryEntry, EditorType } from '../types.js';
 
 export const THEME_REGISTRY: Record<string, ThemeRegistryEntry> = {
@@ -7,16 +7,16 @@ export const THEME_REGISTRY: Record<string, ThemeRegistryEntry> = {
     name: 'Hatsune Miku',
     version: '0.1.0',
     releases: {
-      vscode: 'https://github.com/vocadev/vocadev/releases/download/v0.1.0/vocadev-vscode-theme-0.1.0.vsix',
-      jetbrains: 'https://github.com/vocadev/vocadev/releases/download/v0.1.0/vocadev-jetbrains-theme-0.1.0.zip',
-      neovim: 'https://github.com/vocadev/vocadev/releases/download/v0.1.0/vocadev-neovim-theme-0.1.0.tar.gz',
-      zed: 'https://github.com/vocadev/vocadev/releases/download/v0.1.0/miku.json',
+      vscode: 'https://github.com/M5Devs/VocaDev/releases/download/v0.1.0/vocadev-vscode-theme-0.1.0.vsix',
+      jetbrains: 'https://github.com/M5Devs/VocaDev/releases/download/v0.1.0/vocadev-jetbrains-theme-0.1.0.zip',
+      neovim: 'https://github.com/M5Devs/VocaDev/releases/download/v0.1.0/vocadev-neovim-theme-0.1.0.tar.gz',
+      zed: 'https://github.com/M5Devs/VocaDev/releases/download/v0.1.0/miku.json',
     },
     rawFallback: {
-      vscode: 'https://raw.githubusercontent.com/vocadev/vocadev/main/packages/themes/vscode/themes/miku-color-theme.json',
-      jetbrains: 'https://raw.githubusercontent.com/vocadev/vocadev/main/packages/themes/jetbrains/src/main/resources/miku.theme.json',
-      neovim: 'https://raw.githubusercontent.com/vocadev/vocadev/main/packages/themes/neovim/colors/vocadev-miku.vim',
-      zed: 'https://raw.githubusercontent.com/vocadev/vocadev/main/packages/themes/zed/themes/miku.json',
+      vscode: 'https://raw.githubusercontent.com/M5Devs/VocaDev/main/packages/themes/vscode/themes/miku-color-theme.json',
+      jetbrains: 'https://raw.githubusercontent.com/M5Devs/VocaDev/main/packages/themes/jetbrains/src/main/resources/miku.theme.json',
+      neovim: 'https://raw.githubusercontent.com/M5Devs/VocaDev/main/packages/themes/neovim/colors/vocadev-miku.vim',
+      zed: 'https://raw.githubusercontent.com/M5Devs/VocaDev/main/packages/themes/zed/themes/miku.json',
     },
   },
 };

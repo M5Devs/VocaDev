@@ -20,22 +20,22 @@ Designed with extensibility in mind for future characters (e.g., Kasane Teto, Ak
 
 | Editor / Tool | Package | Status |
 | --- | --- | --- |
-| **CLI Toolkit** | `@vocadev/cli` | Supported |
-| **VS Code** | `@vocadev/vscode-theme` | Supported |
-| **JetBrains IDEs** (IntelliJ, PyCharm, WebStorm, Android Studio) | `@vocadev/jetbrains-theme` | Supported |
-| **Neovim** | `@vocadev/neovim-theme` | Supported |
-| **Zed** | `@vocadev/zed-theme` | Supported |
-| **Core Palette** | `@vocadev/core` | Supported |
+| **CLI Toolkit** | `@M5Devs/vocadev-cli` | Supported |
+| **VS Code** | `@M5Devs/vocadev-vscode-theme` | Supported |
+| **JetBrains IDEs** (IntelliJ, PyCharm, WebStorm, Android Studio) | `@M5Devs/vocadev-jetbrains-theme` | Supported |
+| **Neovim** | `@M5Devs/vocadev-neovim-theme` | Supported |
+| **Zed** | `@M5Devs/vocadev-zed-theme` | Supported |
+| **Core Palette** | `@M5Devs/vocadev-core` | Supported |
 
 ---
 
 ## 📦 Installation from GitHub Packages
 
 ```bash
-npm install @vocadev/core --registry=https://npm.pkg.github.com
+npm install @M5Devs/vocadev-core --registry=https://npm.pkg.github.com
 # or
-echo "@vocadev:registry=https://npm.pkg.github.com" >> .npmrc
-npm install @vocadev/core
+echo "@M5Devs:registry=https://npm.pkg.github.com" >> .npmrc
+npm install @M5Devs/vocadev-core
 ```
 
 ---
@@ -67,14 +67,14 @@ vocadev/
 
 ---
 
-## 🛠️ VocaDev CLI (`@vocadev/cli`)
+## 🛠️ VocaDev CLI (`@M5Devs/vocadev-cli`)
 
 Install the VocaDev CLI globally or use it via pnpm / npx:
 
 ```bash
-npm install -g @vocadev/cli
+npm install -g @M5Devs/vocadev-cli
 # or run directly
-pnpm dlx @vocadev/cli --help
+pnpm dlx @M5Devs/vocadev-cli --help
 ```
 
 ### CLI Commands & Usage
@@ -110,7 +110,7 @@ vocadev update
 To install the Zed extension locally:
 
 ```bash
-pnpm --filter @vocadev/zed-theme zed:package
+pnpm --filter @M5Devs/vocadev-zed-theme zed:package
 ```
 
 1. Open Zed Editor.
@@ -154,7 +154,7 @@ Alternatively, copy `packages/themes/zed/themes/miku.json` to your Zed themes di
 To package and install the VS Code theme extension locally:
 
 ```bash
-pnpm --filter @vocadev/vscode-theme build
+pnpm --filter @M5Devs/vocadev-vscode-theme build
 ```
 
 Install the resulting `.vsix` file: `code --install-extension vocadev-vscode-theme-0.1.0.vsix`.
@@ -166,7 +166,7 @@ Install the resulting `.vsix` file: `code --install-extension vocadev-vscode-the
 Build the plugin zip package locally:
 
 ```bash
-pnpm --filter @vocadev/jetbrains-theme build
+pnpm --filter @M5Devs/vocadev-jetbrains-theme build
 # or: pnpm jetbrains:gradle-build
 ```
 
@@ -184,7 +184,7 @@ Add to your plugin manager:
 #### lazy.nvim
 ```lua
 {
-  "vocadev/vocadev",
+  "M5Devs/VocaDev",
   config = function()
     require("vocadev.themes.miku").setup()
     vim.cmd.colorscheme("vocadev-miku")
@@ -195,7 +195,7 @@ Add to your plugin manager:
 #### packer.nvim
 ```lua
 use {
-  "vocadev/vocadev",
+  "M5Devs/VocaDev",
   config = function()
     require("vocadev.themes.miku").setup()
     vim.cmd([[colorscheme vocadev-miku]])
@@ -205,7 +205,7 @@ use {
 
 #### vim-plug
 ```vim
-Plug 'vocadev/vocadev'
+Plug 'M5Devs/VocaDev'
 
 colorscheme vocadev-miku
 ```
@@ -224,8 +224,8 @@ colorscheme vocadev-miku
 
 1. **Clone repository:**
    ```bash
-   git clone https://github.com/vocadev/vocadev.git
-   cd vocadev
+   git clone https://github.com/M5Devs/VocaDev.git
+   cd VocaDev
    ```
 
 2. **Install dependencies:**
