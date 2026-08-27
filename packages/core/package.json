@@ -24,6 +24,13 @@
     "./miku.json": "./dist/miku.json",
     "./miku.css": "./dist/miku.css"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vocadev/vocadev.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "build": "tsup",
     "test": "vitest run",

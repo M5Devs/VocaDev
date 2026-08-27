@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "description": "VocaDev Miku Dark colorscheme for Neovim",
   "main": "lua/vocadev/themes/init.lua",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vocadev/vocadev.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "build": "echo \"@vocadev/neovim-theme package build\"",
     "neovim:package": "echo \"@vocadev/neovim-theme package build\"",

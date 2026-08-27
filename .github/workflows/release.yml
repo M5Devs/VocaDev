@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-python@v5
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -28,6 +28,22 @@ jobs:
       # ====== Build Core ======
       - name: Build @vocadev/core
         run: pnpm --filter @vocadev/core build
+
+      # ====== Build Monorepo ======
+      - name: Build monorepo
+        run: pnpm build
+
+      # ====== Publish to GitHub Packages ======
+      - name: Setup Node for GitHub Packages
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Publish to GitHub Packages
+        run: pnpm publish -r --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # ====== Build VS Code Extension ======
       - name: Build VS Code Theme
