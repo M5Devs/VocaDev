@@ -3,7 +3,7 @@ name: Build Release Assets
 on:
   push:
     tags:
-      - 'v*'  # يشتغل لما نعمل tag بـ v0.1.0, v0.2.0,إلخ
+      - 'v*'
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-python@v5
         with:
           node-version: '20'
 
@@ -29,28 +29,11 @@ jobs:
       - name: Build @M5Devs/vocadev-core
         run: pnpm --filter @M5Devs/vocadev-core build
 
-      # ====== Build Monorepo ======
-      - name: Build monorepo
-        run: pnpm build
-
-      # ====== Publish to GitHub Packages ======
-      - name: Setup Node for GitHub Packages
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          registry-url: 'https://npm.pkg.github.com'
-
-      - name: Publish to GitHub Packages
-        run: pnpm publish -r --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       # ====== Build VS Code Extension ======
       - name: Build VS Code Theme
         run: |
           pnpm --filter @M5Devs/vocadev-vscode-theme build
           pnpm --filter @M5Devs/vocadev-vscode-theme package
-        # بيطلع .vsix في packages/themes/vscode/
 
       # ====== Build JetBrains Plugin ======
       - name: Setup Java
@@ -63,44 +46,49 @@ jobs:
         run: |
           cd packages/themes/jetbrains
           ./gradlew buildPlugin
-        # بيطلع .zip في build/distributions/
 
-      # ====== Build Neovim ======
+      # ====== Package Neovim ======
       - name: Package Neovim Theme
         run: |
           cd packages/themes/neovim
           mkdir -p ../../dist
           zip -r ../../dist/vocadev-neovim-miku-${{ github.ref_name }}.zip \
             lua/ colors/ README.md
-        # بيحزم Lua files في .zip
 
-      # ====== Build Zed ======
+      # ====== Package Zed ======
       - name: Package Zed Theme
         run: |
           cd packages/themes/zed
           mkdir -p ../../dist
           zip -r ../../dist/vocadev-zed-miku-${{ github.ref_name }}.zip \
             themes/ extension.toml README.md
-        # بيحزم Zed files في .zip
 
       # ====== Collect Assets ======
       - name: Collect all assets
         run: |
           mkdir -p release-assets
-          
-          # VS Code
           cp packages/themes/vscode/*.vsix release-assets/ || true
-          
-          # JetBrains
           cp packages/themes/jetbrains/build/distributions/*.zip release-assets/ || true
-          
-          # Neovim
           cp dist/vocadev-neovim-*.zip release-assets/ || true
-          
-          # Zed
           cp dist/vocadev-zed-*.zip release-assets/ || true
-          
           ls -la release-assets/
+
+      # ====== Publish to GitHub Packages ======
+      - name: Setup Node for GitHub Packages
+        uses: actions/setup-python@v5
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Configure .npmrc
+        run: |
+          echo "@M5Devs:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.PUBLISH_TOKEN }}" >> .npmrc
+
+      - name: Publish to GitHub Packages
+        run: pnpm publish -r --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
 
       # ====== Create GitHub Release ======
       - name: Create Release
@@ -119,6 +107,12 @@ jobs:
             | JetBrains | `vocadev-jetbrains-*.zip` | Settings → Plugins → Install from disk |
             | Neovim | `vocadev-neovim-*.zip` | Extract to `~/.config/nvim/` |
             | Zed | `vocadev-zed-*.zip` | Extensions → Install from file |
+            
+            ### 📦 GitHub Packages
+            
+            ```bash
+            npm install @M5Devs/vocadev-core --registry=https://npm.pkg.github.com
+            ```
             
             ### 🎨 Miku Palette
             - Primary: `#39C5BB`
