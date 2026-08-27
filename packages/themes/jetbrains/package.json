@@ -2,7 +2,13 @@
   "name": "@vocadev/jetbrains-theme",
   "version": "0.1.0",
   "description": "VocaDev Miku Dark Theme plugin for JetBrains IDEs",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vocadev/vocadev.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "build": "./gradlew buildPlugin",
     "jetbrains:gradle-build": "./gradlew buildPlugin",

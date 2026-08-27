@@ -13,6 +13,13 @@
     "dist",
     "bin"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vocadev/vocadev.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
