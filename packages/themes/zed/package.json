@@ -1,0 +1,25 @@
+{
+  "name": "@vocadev/zed-theme",
+  "version": "0.1.0",
+  "description": "VocaDev Miku Dark theme extension for Zed Editor",
+  "main": "themes/miku.json",
+  "scripts": {
+    "build": "echo \"@vocadev/zed-theme package build\"",
+    "zed:package": "echo \"@vocadev/zed-theme package build\"",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vocadev/core": "workspace:*"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.8"
+  },
+  "keywords": [
+    "zed",
+    "zed-extension",
+    "zed-theme",
+    "theme",
+    "miku",
+    "vocadev"
+  ]
+}

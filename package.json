@@ -6,6 +6,7 @@
     "build": "turbo run build",
     "jetbrains:gradle-build": "turbo run jetbrains:gradle-build",
     "neovim:package": "turbo run neovim:package",
+    "zed:package": "turbo run zed:package",
     "dev": "turbo run dev",
     "test": "turbo run test",
     "lint": "turbo run lint",
